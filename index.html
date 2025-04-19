@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiny To-Do List</title>
+  <style>
+    body {
+    background: #7d0101;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .todo-container {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 280px;
+    text-align: center;
+  }
+  
+  input {
+    padding: 13px;
+    width: 65%;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 8px 10px;
+    background: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+  }
+  
+  li {
+    background: #f1f1f1;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  li:hover {
+    background: #c8e6c9;
+  }
+  
+  li::after {
+    content: '✖';
+    color: red;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+<div class="todo-container">
+    
+  <h1>Here Is My To-Do List</h1>
+  <form id="todoForm">
+    <input type="text" id="taskInput" placeholder="Enter task" required>
+    <button type="submit">Add-ON</button>
+  </form>
+  <ul id="taskList"></ul>
+</div>
+
+<script>
+  document.getElementById('todoForm').onsubmit = function(e) {
+    e.preventDefault();
+    let li = document.createElement('li');
+    li.textContent = taskInput.value;
+    li.onclick = () => li.remove();
+    taskList.appendChild(li);
+    taskInput.value = '';
+  }
+</script>
+</body>
+</html>
